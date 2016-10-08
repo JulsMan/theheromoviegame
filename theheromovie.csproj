@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F3E8A625-5230-4B18-A7B8-C3986776308E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>theheromovie</RootNamespace>
+    <AssemblyName>theheromovie</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="index.html" />
+    <Content Include="lib\game\entities\demonhead.js" />
+    <Content Include="lib\game\entities\door.js" />
+    <Content Include="lib\game\entities\stairs.js" />
+    <Content Include="lib\game\keys.js" />
+    <Content Include="lib\game\levels\castle2.js" />
+    <Content Include="lib\game\levels\castle_level2.js" />
+    <Content Include="lib\game\levels\demoncave1.js" />
+    <Content Include="lib\game\levels\southrond_town.js" />
+    <Content Include="lib\game\readme.txt" />
+    <Content Include="lib\game\spells.js" />
+    <Content Include="lib\game\items.js" />
+    <Content Include="lib\plugins\chatbubble.js" />
+    <Content Include="lib\game\entities\chest.js" />
+    <Content Include="lib\game\entities\torch.js" />
+    <Content Include="lib\game\entities\coin.js" />
+    <Content Include="lib\plugins\combat.js" />
+    <Content Include="lib\plugins\dialog.js" />
+    <Content Include="lib\game\entities\demon.js" />
+    <Content Include="lib\game\entities\ghost.js" />
+    <Content Include="lib\game\entities\ogre.js" />
+    <Content Include="lib\game\entities\skeleton.js" />
+    <Content Include="lib\game\entities\torch.js" />
+    <Content Include="lib\game\onhold\button.js" />
+    <Content Include="lib\game\onhold\chatbubble.js" />
+    <Content Include="lib\game\entities\guard.js" />
+    <Content Include="lib\game\entities\levelchange.js" />
+    <Content Include="lib\game\entities\player.js" />
+    <Content Include="lib\game\onhold\textballoon.js" />
+    <Content Include="lib\game\levels\southrond.js" />
+    <Content Include="lib\game\levels\throneroom.js" />
+    <Content Include="lib\game\main.js" />
+    <Content Include="lib\game\quests.js" />
+    <Content Include="lib\impact\animation.js" />
+    <Content Include="lib\impact\background-map.js" />
+    <Content Include="lib\impact\collision-map.js" />
+    <Content Include="lib\impact\debug\debug.css" />
+    <Content Include="lib\impact\debug\debug.js" />
+    <Content Include="lib\impact\debug\entities-panel.js" />
+    <Content Include="lib\impact\debug\graph-panel.js" />
+    <Content Include="lib\impact\debug\maps-panel.js" />
+    <Content Include="lib\impact\debug\menu.js" />
+    <Content Include="lib\impact\entity-pool.js" />
+    <Content Include="lib\impact\entity.js" />
+    <Content Include="lib\impact\font.js" />
+    <Content Include="lib\impact\game.js" />
+    <Content Include="lib\impact\image.js" />
+    <Content Include="lib\impact\impact.js" />
+    <Content Include="lib\impact\input.js" />
+    <Content Include="lib\impact\loader.js" />
+    <Content Include="lib\impact\map.js" />
+    <Content Include="lib\impact\sound.js" />
+    <Content Include="lib\impact\system.js" />
+    <Content Include="lib\impact\timer.js" />
+    <Content Include="lib\plugins\ai.js" />
+    <Content Include="lib\plugins\button.js" />
+    <Content Include="lib\plugins\hud.js" />
+    <Content Include="lib\plugins\lawnchair\impact-plugin.js" />
+    <Content Include="lib\plugins\tween.js" />
+    <Content Include="lib\plugins\utils.js" />
+    <Content Include="lib\plusplus\abilities\ability-damage.js" />
+    <Content Include="lib\plusplus\abilities\ability-shoot.js" />
+    <Content Include="lib\plusplus\abilities\ability.js" />
+    <Content Include="lib\plusplus\abilities\glow-toggle.js" />
+    <Content Include="lib\plusplus\abilities\glow.js" />
+    <Content Include="lib\plusplus\abilities\interact.js" />
+    <Content Include="lib\plusplus\abilities\melee.js" />
+    <Content Include="lib\plusplus\abilities\mimic.js" />
+    <Content Include="lib\plusplus\abstractities\character.js" />
+    <Content Include="lib\plusplus\abstractities\creature.js" />
+    <Content Include="lib\plusplus\abstractities\demo.js" />
+    <Content Include="lib\plusplus\abstractities\door-triggered.js" />
+    <Content Include="lib\plusplus\abstractities\door-usable.js" />
+    <Content Include="lib\plusplus\abstractities\door.js" />
+    <Content Include="lib\plusplus\abstractities\effect.js" />
+    <Content Include="lib\plusplus\abstractities\lever.js" />
+    <Content Include="lib\plusplus\abstractities\particle-fast.js" />
+    <Content Include="lib\plusplus\abstractities\particle.js" />
+    <Content Include="lib\plusplus\abstractities\player.js" />
+    <Content Include="lib\plusplus\abstractities\projectile.js" />
+    <Content Include="lib\plusplus\abstractities\shape.js" />
+    <Content Include="lib\plusplus\abstractities\spawner-character.js" />
+    <Content Include="lib\plusplus\abstractities\spawner-fast.js" />
+    <Content Include="lib\plusplus\abstractities\spawner.js" />
+    <Content Include="lib\plusplus\abstractities\tutorial.js" />
+    <Content Include="lib\plusplus\config-user.js" />
+    <Content Include="lib\plusplus\core\animation.js" />
+    <Content Include="lib\plusplus\core\background-map.js" />
+    <Content Include="lib\plusplus\core\camera.js" />
+    <Content Include="lib\plusplus\core\collision-map.js" />
+    <Content Include="lib\plusplus\core\config.js" />
+    <Content Include="lib\plusplus\core\entity.js" />
+    <Content Include="lib\plusplus\core\font.js" />
+    <Content Include="lib\plusplus\core\game.js" />
+    <Content Include="lib\plusplus\core\hierarchy.js" />
+    <Content Include="lib\plusplus\core\image-drawing.js" />
+    <Content Include="lib\plusplus\core\image.js" />
+    <Content Include="lib\plusplus\core\input.js" />
+    <Content Include="lib\plusplus\core\layer.js" />
+    <Content Include="lib\plusplus\core\loader.js" />
+    <Content Include="lib\plusplus\core\pathfinding-map.js" />
+    <Content Include="lib\plusplus\core\player-manager.js" />
+    <Content Include="lib\plusplus\core\plusplus.js" />
+    <Content Include="lib\plusplus\core\timer.js" />
+    <Content Include="lib\plusplus\debug\debug.css" />
+    <Content Include="lib\plusplus\debug\debug.js" />
+    <Content Include="lib\plusplus\debug\entities-panel.js" />
+    <Content Include="lib\plusplus\debug\graph-panel.js" />
+    <Content Include="lib\plusplus\debug\maps-panel.js" />
+    <Content Include="lib\plusplus\debug\menu.js" />
+    <Content Include="lib\plusplus\debug\pathfinding-panel.js" />
+    <Content Include="lib\plusplus\entities\ability-activate.js" />
+    <Content Include="lib\plusplus\entities\ability-enable.js" />
+    <Content Include="lib\plusplus\entities\ability-upgrade.js" />
+    <Content Include="lib\plusplus\entities\camera-atmosphere.js" />
+    <Content Include="lib\plusplus\entities\camera-follow.js" />
+    <Content Include="lib\plusplus\entities\camera-shake.js" />
+    <Content Include="lib\plusplus\entities\checkpoint.js" />
+    <Content Include="lib\plusplus\entities\conversation.js" />
+    <Content Include="lib\plusplus\entities\demo-hold.js" />
+    <Content Include="lib\plusplus\entities\demo-swipe.js" />
+    <Content Include="lib\plusplus\entities\demo-tap.js" />
+    <Content Include="lib\plusplus\entities\destructable-collide.js" />
+    <Content Include="lib\plusplus\entities\destructable-damage.js" />
+    <Content Include="lib\plusplus\entities\destructable.js" />
+    <Content Include="lib\plusplus\entities\direction.js" />
+    <Content Include="lib\plusplus\entities\dummy.js" />
+    <Content Include="lib\plusplus\entities\effect-electricity.js" />
+    <Content Include="lib\plusplus\entities\effect-pow.js" />
+    <Content Include="lib\plusplus\entities\event-defense.js" />
+    <Content Include="lib\plusplus\entities\explosion.js" />
+    <Content Include="lib\plusplus\entities\lava.js" />
+    <Content Include="lib\plusplus\entities\levelchange.js" />
+    <Content Include="lib\plusplus\entities\light.js" />
+    <Content Include="lib\plusplus\entities\narrative.js" />
+    <Content Include="lib\plusplus\entities\pain-instagib.js" />
+    <Content Include="lib\plusplus\entities\pain.js" />
+    <Content Include="lib\plusplus\entities\particle-color.js" />
+    <Content Include="lib\plusplus\entities\particle-debris.js" />
+    <Content Include="lib\plusplus\entities\shape-climbable-one-way.js" />
+    <Content Include="lib\plusplus\entities\shape-climbable.js" />
+    <Content Include="lib\plusplus\entities\shape-solid.js" />
+    <Content Include="lib\plusplus\entities\slime.js" />
+    <Content Include="lib\plusplus\entities\switch.js" />
+    <Content Include="lib\plusplus\entities\text.js" />
+    <Content Include="lib\plusplus\entities\trigger-constant.js" />
+    <Content Include="lib\plusplus\entities\trigger-controller.js" />
+    <Content Include="lib\plusplus\entities\trigger-function.js" />
+    <Content Include="lib\plusplus\entities\trigger-input.js" />
+    <Content Include="lib\plusplus\entities\trigger-kill.js" />
+    <Content Include="lib\plusplus\entities\trigger-property.js" />
+    <Content Include="lib\plusplus\entities\trigger-reverse-constant.js" />
+    <Content Include="lib\plusplus\entities\trigger-reverse.js" />
+    <Content Include="lib\plusplus\entities\trigger.js" />
+    <Content Include="lib\plusplus\entities\tutorial-hold.js" />
+    <Content Include="lib\plusplus\entities\tutorial-swipe.js" />
+    <Content Include="lib\plusplus\entities\tutorial-tap.js" />
+    <Content Include="lib\plusplus\entities\void.js" />
+    <Content Include="lib\plusplus\helpers\pathfinding.js" />
+    <Content Include="lib\plusplus\helpers\preloader.js" />
+    <Content Include="lib\plusplus\helpers\shims.js" />
+    <Content Include="lib\plusplus\helpers\signals.js" />
+    <Content Include="lib\plusplus\helpers\tweens.js" />
+    <Content Include="lib\plusplus\helpers\utils.js" />
+    <Content Include="lib\plusplus\helpers\utilscolor.js" />
+    <Content Include="lib\plusplus\helpers\utilsdraw.js" />
+    <Content Include="lib\plusplus\helpers\utilsintersection.js" />
+    <Content Include="lib\plusplus\helpers\utilsmath.js" />
+    <Content Include="lib\plusplus\helpers\utilstile.js" />
+    <Content Include="lib\plusplus\helpers\utilsvector2.js" />
+    <Content Include="lib\plusplus\ui\ui-button.js" />
+    <Content Include="lib\plusplus\ui\ui-dpad.js" />
+    <Content Include="lib\plusplus\ui\ui-element.js" />
+    <Content Include="lib\plusplus\ui\ui-interactive.js" />
+    <Content Include="lib\plusplus\ui\ui-meter.js" />
+    <Content Include="lib\plusplus\ui\ui-overlay-pause.js" />
+    <Content Include="lib\plusplus\ui\ui-overlay.js" />
+    <Content Include="lib\plusplus\ui\ui-text-box.js" />
+    <Content Include="lib\plusplus\ui\ui-text-bubble.js" />
+    <Content Include="lib\plusplus\ui\ui-text.js" />
+    <Content Include="lib\plusplus\ui\ui-toggle-pause.js" />
+    <Content Include="lib\plusplus\ui\ui-toggle-volume.js" />
+    <Content Include="lib\plusplus\ui\ui-toggle.js" />
+    <Content Include="lib\plusplus\ui\ui-tracker.js" />
+    <Content Include="lib\weltmeister\arrow.png" />
+    <Content Include="lib\weltmeister\collisiontiles-64.png" />
+    <Content Include="lib\weltmeister\collisiontiles_plusplus_64.png" />
+    <Content Include="lib\weltmeister\config.js" />
+    <Content Include="lib\weltmeister\edit-entities.js" />
+    <Content Include="lib\weltmeister\edit-map.js" />
+    <Content Include="lib\weltmeister\entities.js" />
+    <Content Include="lib\weltmeister\evented-input.js" />
+    <Content Include="lib\weltmeister\jquery-1.7.1.min.js" />
+    <Content Include="lib\weltmeister\jquery-ui-1.8.1.custom.min.js" />
+    <Content Include="lib\weltmeister\modal-dialogs.js" />
+    <Content Include="lib\weltmeister\select-file-dropdown.js" />
+    <Content Include="lib\weltmeister\tile-select.js" />
+    <Content Include="lib\weltmeister\undo.js" />
+    <Content Include="lib\weltmeister\weltmeister.css" />
+    <Content Include="lib\weltmeister\weltmeister.js" />
+    <Content Include="media\04b03.font.png" />
+    <Content Include="media\banner_impactplusplus.png" />
+    <Content Include="media\base_background.png" />
+    <Content Include="media\base_background_2.png" />
+    <Content Include="media\base_out_atlas.png" />
+    <Content Include="media\button64x32.png" />
+    <Content Include="media\buttons_states.png" />
+    <Content Include="media\coins.png" />
+    <Content Include="media\conanthebarb.png" />
+    <Content Include="media\debris.png" />
+    <Content Include="media\demon_head.png" />
+    <Content Include="media\demos_gestures_hold.png" />
+    <Content Include="media\demos_gestures_swipe.png" />
+    <Content Include="media\demos_gestures_tap.png" />
+    <Content Include="media\demo_impactplusplus.png" />
+    <Content Include="media\directions_16.png" />
+    <Content Include="media\directions_32.png" />
+    <Content Include="media\door.png" />
+    <Content Include="media\dpad_16.png" />
+    <Content Include="media\dpad_32.png" />
+    <Content Include="media\dpad_64.png" />
+    <Content Include="media\dummy.png" />
+    <Content Include="media\DungeonCrawl_ProjectUtumnoTileset.png" />
+    <Content Include="media\effect_electricity.png" />
+    <Content Include="media\effect_pow.png" />
+    <Content Include="media\favicon.ico" />
+    <Content Include="media\font.png" />
+    <Content Include="media\font_04b03_black_16.png" />
+    <Content Include="media\font_04b03_black_8.png" />
+    <Content Include="media\font_04b03_white_16.png" />
+    <Content Include="media\font_04b03_white_8.png" />
+    <Content Include="media\font_helloplusplus_black_16.png" />
+    <Content Include="media\font_helloplusplus_black_8.png" />
+    <Content Include="media\font_helloplusplus_white_16.png" />
+    <Content Include="media\font_helloplusplus_white_8.png" />
+    <Content Include="media\fork_impactplusplus.png" />
+    <Content Include="media\hero_bus.png" />
+    <Content Include="media\icons\demonhead.png" />
+    <Content Include="media\icons\heal.png" />
+    <Content Include="media\icons\spell.png" />
+    <Content Include="media\icons\thunder.png" />
+    <Content Include="media\icons\torch.png" />
+    <Content Include="media\sprites_hero_2.png" />
+    <Content Include="media\sprites_hero_3.png" />
+    <Content Include="media\stairs1.png" />
+    <None Include="windows\dialog.php" />
+    <Content Include="windows\img\hero.png" />
+    <Content Include="windows\img\ogre.png" />
+    <Content Include="windows\img\skeleton_warrior.png" />
+    <Content Include="windows\img\unknown.png" />
+    <Content Include="media\logo_impactplusplus_128.png" />
+    <Content Include="media\logo_impactplusplus_25.png" />
+    <Content Include="media\logo_impactplusplus_32.png" />
+    <Content Include="media\logo_impactplusplus_64.png" />
+    <Content Include="media\minecraft_tiles.png" />
+    <Content Include="media\monsters-32x32.png" />
+    <Content Include="media\particles.png" />
+    <Content Include="media\pathfindingtiles_plusplus_16.png" />
+    <Content Include="media\pathfindingtiles_plusplus_32.png" />
+    <Content Include="media\pathfindingtiles_plusplus_64.png" />
+    <Content Include="media\pathfindingtiles_plusplus_8.png" />
+    <Content Include="media\door2.png" />
+    <Content Include="media\skeleton_warrior.png" />
+    <Content Include="media\sprites_guard.png" />
+    <Content Include="media\sprites_guard_black.png" />
+    <Content Include="media\sprites_hero.png" />
+    <Content Include="media\terrain_atlas.png" />
+    <Content Include="media\texture_lava.png" />
+    <Content Include="media\texture_slime.png" />
+    <Content Include="media\torch.png" />
+    <Content Include="media\treasure_chest.png" />
+    <Content Include="media\visualize_collisiontiles_plusplus_16.png" />
+    <Content Include="media\visualize_collisiontiles_plusplus_32.png" />
+    <Content Include="media\visualize_collisiontiles_plusplus_64.png" />
+    <Content Include="media\visualize_collisiontiles_plusplus_8.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\publish.js" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\banner_impactplusplus.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\demo_impactplusplus.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\docs_impactplusplus.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\download_impactplusplus.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\example_abilities.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\example_camera.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\example_config.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\example_creature.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\example_entities.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\example_game.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\example_lighting.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\example_more.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\example_particles.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\example_pathfinding.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\example_player.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\example_ui.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\fork_impactplusplus.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\glyphicons-halflings-white.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\glyphicons-halflings.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\logo_impactplusplus_128.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\logo_impactplusplus_25.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\logo_impactplusplus_32.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\img\logo_impactplusplus_64.png" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\scripts\bootstrap.min.js" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\scripts\html5shiv.js" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\scripts\jquery-1.9.1.min.js" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\scripts\linenumber.js" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\scripts\main.js" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\scripts\prettify\Apache-License-2.0.txt" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\scripts\prettify\lang-css.js" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\scripts\prettify\prettify.js" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\styles\bootstrap.min.css" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\styles\jsdoc-default.css" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\styles\main.css" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\styles\prettify-jsdoc.css" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\styles\prettify-tomorrow.css" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\static\styles\prettify.css" />
+    <Content Include="Web.config" />
+    <Content Include="weltmeister.html" />
+    <Content Include="windows\jquery.typetype.min.js" />
+    <Content Include="windows\select2-spinner.gif" />
+    <Content Include="windows\select2.css" />
+    <Content Include="windows\select2.min.js" />
+    <Content Include="windows\select2.png" />
+    <Content Include="windows\window.combat.js" />
+    <Content Include="windows\windows.gameover.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\weltmeister\api\browse.php" />
+    <Content Include="lib\weltmeister\api\config.php" />
+    <Content Include="lib\weltmeister\api\glob.php" />
+    <Content Include="lib\weltmeister\api\save.php" />
+    <Content Include="tools\bake.bat" />
+    <Content Include="tools\bake.php" />
+    <Content Include="tools\bake.sh" />
+    <Content Include="tools\jsmin.php" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\README.md" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\container.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\details.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\example.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\examples.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\exceptions.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\layout.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\mainpage.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\members.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\method.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\params.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\properties.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\returns.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\source.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\tutorial.tmpl" />
+    <Content Include="tools\jsdoc3\templates\impactplusplus\tmpl\type.tmpl" />
+    <Content Include="media\sound\stepdirt.ogg" />
+    <Content Include="media\sound\stepsnow.ogg" />
+    <Content Include="media\sound\stepstone.ogg" />
+    <Content Include="media\sound\stepwater.ogg" />
+    <Content Include="media\sound\stepwood.ogg" />
+    <Content Include="media\music\castle.ogg" />
+    <Content Include="media\music\Campaign.ogg" />
+    <Content Include="media\music\Middle_age_RPG_Theme_1.ogg" />
+    <Content Include="media\music\Middle_age_RPG_Theme_2.ogg" />
+    <Content Include="media\music\Town.ogg" />
+    <Content Include="media\music\Unknown_place.ogg" />
+    <Content Include="media\sound\page-flip-4.ogg" />
+    <Content Include="media\sound\action1.ogg" />
+    <Content Include="media\sound\coin_jingle.ogg" />
+    <Content Include="media\sound\scribble.ogg" />
+    <Content Include="media\sound\punch1.ogg" />
+    <Content Include="media\sound\heal.ogg" />
+    <Content Include="media\music\fight.ogg" />
+    <Content Include="media\sound\miss4.ogg" />
+    <Content Include="media\sound\monstergrunt2.ogg" />
+    <Content Include="media\sound\latch.ogg" />
+    <Content Include="media\sound\action2.ogg" />
+    <Content Include="media\sound\cave.ogg" />
+    <Content Include="media\sound\chime.ogg" />
+    <Content Include="media\sound\chime2.ogg" />
+    <Content Include="media\sound\monstergrunt1.ogg" />
+    <Content Include="media\sound\sword1.ogg" />
+    <Content Include="media\sound\thunder.ogg" />
+    <Content Include="media\sound\Dark_Laugh.ogg" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="windows\img.php">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="windows\rpg.php" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49251/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

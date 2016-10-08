@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Impact Game</title>
+	<style type="text/css">
+		html,body {
+			background-color: #333;
+			color: #fff;
+			font-family: helvetica, arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			font-size: 12pt;
+		}
+		
+		#canvas {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+	</style>
+    
+	<script type="text/javascript" src="lib/impact/impact.js"></script>
+	<script type="text/javascript" src="lib/game/main.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="lib/plugins/utils.js"></script>
+    <script src="windows/window.combat.js"></script>
+    <script src="windows/windows.gameover.js"></script>
+    <script src="lib/game/spells.js"></script>
+    <script src="lib/game/keys.js"></script>
+    <script src="lib/game/quests.js"></script>
+    <script src="lib/game/items.js"></script>
+    <link href="windows/select2.css" rel="stylesheet" />
+    <script src="windows/select2.min.js"></script>
+
+    <style type="text/css">
+        input.stat {
+            width: 76px;
+        }
+        input.combat-button {
+            width:135px;
+
+        }
+
+        #inventoryWindow {
+            border: 1px solid #d3d3d3;
+            font-weight: normal;
+            color: #555555;
+        }
+
+        .inv {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 450px;
+            border: 1px solid #fff;
+        }
+
+        .inv li {
+            margin: 3px 3px 3px 0;
+            padding: 1px;
+            float: left;
+            width: 120px;
+            height: 124px;
+            font-size: 14px;
+            text-align: center;
+           
+        }
+
+    </style>
+    <script>
+        $(function () {
+            $(".pop").dialog({
+                autoOpen: false,
+                height: 480,
+                width: 660,
+                modal: true,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+
+            $("div").find(".ui-dialog-titlebar-close").css("visibility", "hidden");
+            $(document).tooltip();
+            $("#buttonSpells").select2({ placeholder: 'Spell Book', allowClear: true });
+            $("#progressbar-hero").progressbar({ value: 100 });
+            $("#progressbar-hero").css('background', "#808080");
+            $("#progressbar-hero > div").css('background', "#0000A0" );
+            $("#progressbar-npc").progressbar({ value: 100 });
+            $("#progressbar-npc").css('background', "#808080");
+            $("#progressbar-npc > div").css('background', "#800000");
+
+            //$("div[aria-describedby='combatWindow']").find(".ui-dialog-titlebar-close").css("visibility", "hidden");
+           
+
+        });
+
+
+        function onSpellSelectChange() {
+            var sel = $("#buttonSpells option:selected").val();
+            if (sel == 'Spell Book') return false;
+            CombatClass.heroTurn(sel);
+            return true;
+        }
+
+
+      
+    </script>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+
+    <!-- Add all the dialogs: combat, interactive, inventory, spellbook, newitem -->
+    <div id="combatWindow" title="Get ready for a fight!" class="pop">
+        <fieldset>
+            <table style="padding: 10px 5px 5px 10px">
+                <tr>
+                    <td colspan="4">
+                        <input id="combat-log" type="text" readonly="true" style="width:100%; text-align:center;"/>
+                    </td>
+                    </tr>
+                <tr>
+                    <td>
+                        <img id="img_hero" height="160" style="border: solid 5px #0000A0" src="./windows/img.php?img=hero" />
+                    </td>
+                    <td>
+                        <input id="stat-hero-hp" type="text" readonly="true" class="stat" />
+                        <input id="stat-hero-ac" type="text" readonly="true" class="stat" />
+                        <input id="stat-hero-attack" type="text" readonly="true" class="stat" />
+                        <input id="stat-hero-defense" type="text" readonly="true" class="stat" />
+                        <input id="stat-hero-mana" type="text" readonly="true" class="stat" value="Mana:" />
+                    </td>
+                     <td>
+                        <input id="stat-npc-hp" type="text" readonly="true" class="stat" />
+                        <input id="stat-npc-ac" type="text" readonly="true" class="stat" />
+                        <input id="stat-npc-attack" type="text" readonly="true" class="stat" />
+                        <input id="stat-npc-defense" type="text" readonly="true" class="stat" />
+                        <input id="hero-mana-count" type="text" readonly="true" class="stat" />
+                    </td>
+                     <td>
+                        <img id="img_npc" height="160" style="border: solid 5px #800000" />
+                    </td>
+                   
+                </tr>
+                <tr>
+                    
+                    <td colspan="4">
+                        <div id="progressbar-hero"></div>
+                        <div id="progressbar-npc"></div>
+                    </td>
+                </tr>
+                
+            </table>
+            <input type="button" tabindex="1"  value="Attack" class="combat-button" onclick="CombatClass.heroTurn()">
+            <span>Spell Book:</span>
+            <select id="buttonSpells" onchange="onSpellSelectChange()" style="width:240px; padding: 0px 15px 0px 15px;" >
+                
+            </select>
+           
+            <!--<input  type="button" tabindex="3"  value="Inventory" class="combat-button">-->
+            <input  type="button" tabindex="4"  value="Flee" class="combat-button">
+            <input  type="button" onclick="CombatClass.windowUnload();" tabindex="5"  value="Kill (Debug Only)">
+        </fieldset>
+    </div>
+
+    <!-- We will eventually do this inside the game window-->
+    <div id="gameoverWindow" title="Game over" class="pop">
+        <fieldset>
+            You have been slain, bringing thy quest is at an untimely end.  But the legend continues...
+            <input type="button" tabindex="1" value="Try Again" onclick="GameOverClass.reload();">
+        </fieldset>
+    </div>
+
+    <!-- Inventory, Spells, Keys, Quests -->
+    <script type="text/javascript">
+        $(function () {
+            $("#inventoryWindow").tabs();
+            $("#list-spells").sortable();
+            $("#list-keys").sortable();
+            $("#list-inv").sortable();
+            $("#list-quests").sortable();
+        });
+
+        function onInventoryShow() {
+            var player = ig.game.getEntitiesByType(EntityPlayer)[0];
+            var spells = player.spellbook();
+
+            var $el = $("#list-spells");
+            $el.html('');
+            $.each(spells, function (key, value) {
+                $el.append($("<li></li>")
+                        .attr("value", value.name)
+                        .html(__formatLi(value))
+                        .attr("title", value.description)
+                        );
+
+            });
+
+
+            var keys = player.keychain();
+            $el = $("#list-keys");
+            $el.html('');
+            $.each(keys, function (key, value) {
+                $el.append($("<li></li>")
+                        .attr("value", value.name)
+                        .html(__formatLi(value))
+                        .attr("title", value.description)
+                        );
+
+            });
+
+
+            var inv = player.misc();
+            $el = $("#list-inv");
+            $el.html('');
+            $.each(inv, function (key, value) {
+                $el.append($("<li></li>")
+                        .attr("value", value.name)
+                        .html(__formatLi(value))
+                        .attr("title", value.description)
+                        );
+
+            });
+
+
+
+            var qq = player.questlog();
+            $el = $("#list-quests");
+            $el.html('');
+            $.each(qq, function (key, value) {
+                $el.append($("<li></li>")
+                        .attr("value", value.name)
+                        .html(__formatLi(value))
+                        .attr("title", value.description)
+                        );
+
+            });
+
+            function __formatLi(value) {
+                if (value.type == 'spell') {
+                    if (value.icon != undefined) {
+                        return String.format("<img src='{2}' height=32 /> <br/><label><b>{0}</b></label><br/><label>({1}) mana</label>",
+                          value.name, value.mana, value.icon);
+                    }
+                    else {
+                        return String.format("<img src='./media/icons/spell.png' height=32 /> <br/><label><b>{0}</b></label><br/><label>({1}) mana</label>",
+                            value.name, value.mana);
+                    }
+                }
+                else {
+                    if (value.icon != undefined) {
+                        return String.format("<img src='{1}' height=32 /> <br/><label><b>{0}</b></label>",
+                          value.name, value.icon);
+                    }
+                    else {
+                        return String.format("<img src='./media/icons/spell.png' height=32 /> <br/><label><b>{0}</b></label>",
+                            value.name);
+                    }
+                }
+            }
+        }
+    </script>
+    <div id="inventoryWindow" title="Player Inventory" class="pop">
+        <ul>
+            <li><a href="#inventoryWindow-items">Items</a></li>
+            <li><a href="#inventoryWindow-spells">Spells</a></li>
+            <li><a href="#inventoryWindow-quests">Quests</a></li>
+            <li><a href="#inventoryWindow-keys">Keys</a></li>
+        </ul>
+        <fieldset style="min-height: 300px;">
+            <div id="inventoryWindow-items">
+                <ul id="list-inv" class="inv"></ul>
+            </div>
+
+            <div id="inventoryWindow-spells">
+                <ul id="list-spells" class="inv"></ul>
+            </div>
+
+            <div id="inventoryWindow-quests">
+                <ul id="list-quests" class="inv"></ul>
+            </div>
+
+            <div id="inventoryWindow-keys">
+                <ul id="list-keys" class="inv"></ul>
+            </div>
+        </fieldset>
+        <input type="button" onclick=" $('#inventoryWindow').dialog('close');" tabindex="1" value="Close">
+    </div>
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('.button_dialog').on('click', function (e) {
+                e.preventDefault();
+                $('.button_dialog').fadeOut(300);
+                var player = ig.game.getEntitiesByType(EntityPlayer)[0];
+
+                $.ajax({
+                    url: 'windows/dialog.php',
+                    type: 'post',
+                    data: { 'action': this.id, 'value':this.val(), 'npc': player.name },
+                    success: function (data, status) {
+                        if (data == "ok") {
+                            $('#followbtncontainer').html('<p><em>Following!</em></p>');
+                            var numfollowers = parseInt($('#followercnt').html()) + 1;
+                            $('#followercnt').html(numfollowers);
+                        }
+                    },
+                    error: function (xhr, desc, err) {
+                        console.log(xhr);
+                        console.log("Details: " + desc + "\nError:" + err);
+                    }
+                }); // end ajax call
+            });
+        });
+
+
+        function onDialogShow() {
+            var player = ig.game.getEntitiesByType(EntityPlayer)[0];
+            var npc = player.takingWith;
+           
+            var params = [];
+            params.push({'type':npc.npc});   // type
+            params.push({ 'name': npc.name });  // name
+
+            // now all my inventory .. spells, quests, everything
+            for(var o in player.inventory()) {
+                params.push(player.inventory()[o].type, player.inventory()[o].id);
+            }
+            
+
+
+            $('#img_dialog').load('./windows/dialog.php', params.join(","));
+
+
+        }
+    </script>
+    <div id="dialogWindow" title="You strike up a conversation..." class="pop">
+       
+        <!-- clicking button does not unload window.  Changed inventory to dialog -->
+        <!-- <input id="buttonLeave" type="button" tabindex="3" value="Leave" class="button_dialog" onclick="$('#inventoryWindow').dialog('close');"> -->
+        <input id="buttonLeave" type="button" tabindex="3" value="Leave" class="button_dialog" onclick="$('#dialogWindow').dialog('close');">
+    </div>
+
+
+</body>
+</html>
